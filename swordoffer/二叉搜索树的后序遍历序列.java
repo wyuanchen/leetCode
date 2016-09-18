@@ -30,7 +30,5 @@ public class Solution {
                 return false;
         }
 		return bstHelp(sequence,start,i-1)&&bstHelp(sequence,i,end-1);
-
-
     }
 }
