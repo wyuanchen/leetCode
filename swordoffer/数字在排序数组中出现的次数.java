@@ -20,6 +20,8 @@ public class Solution {
 
     }
 
+    //用于搜索k在数组出现的第一个下标或者最后一个下标,其中direction为true则搜索最后一个下标，反之搜索第一个下标,
+    //如果k没有在数组中出现则返回-1
     private int getNumHelp(int[] array,int k,boolean direction){
         int index=-1;
         int left=0;
@@ -42,3 +44,41 @@ public class Solution {
         return index;
     }
 }
+
+
+//C++,利用二分查找,时间复杂度O(logN)
+class Solution {
+public:
+    int GetNumberOfK(vector<int> data ,int k) {
+        int rIndex=getNumHelp(data,k,true);
+        if(rIndex==-1)
+            return 0;
+        int lIndex=getNumHelp(data,k,false);
+        return rIndex-lIndex+1;
+    }
+
+    //用于搜索k在数组出现的第一个下标或者最后一个下标,其中direction为true则搜索最后一个下标，反之搜索第一个下标,
+    //如果k没有在数组中出现则返回-1
+    int getNumHelp(vector<int> data,int k,bool direction){
+        int left=0;
+        int right=data.size()-1;
+        int mid=0;
+        int index=-1;
+        while(left<=right){
+            mid=(left+right)/2;
+            if(data[mid]<k)
+                left=mid+1;
+            else if(data[mid]>k)
+                right=mid-1;
+            else{
+                index=mid;
+                if(direction)
+                    left=mid+1;
+                else
+                    right=mid-1;
+            }
+        }
+        return index;
+    }
+
+};
