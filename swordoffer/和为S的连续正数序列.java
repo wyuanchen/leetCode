@@ -8,7 +8,7 @@ public class Solution {
         ArrayList<ArrayList<Integer>> result=new ArrayList<ArrayList<Integer>>();
         int left=1,right=2;
         int temp=0;
-        while(left<right&&right<sum){
+        while(left<right&&right<sum/2+1){
             temp=(left+right)*(right-left+1)/2;
             if(temp<sum)
                 right++;
@@ -34,7 +34,7 @@ public:
         vector<vector<int>> result;
         int left=1,right=2;
         int temp=0;
-        while(left<right&&right<sum){
+        while(left<right&&right<sum/2+1){
             temp=(left+right)*(right-left+1)/2;
             if(temp<sum)
                 right++;
